@@ -3,8 +3,7 @@
 # The method should return false otherwise.
 
 def only_vowels?(str)
-    str.each_char {|char| return false unless "aeiou".include?(char)}
-    return true
+    str.split("").all? {|char| "aeiou".include?(char)}
 end
 
 p only_vowels?("aaoeee")  # => true

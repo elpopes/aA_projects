@@ -12,7 +12,7 @@ def peak_finder(arr)
             peeks << num
         elsif i.between?(1, arr.length - 1) && num > arr[i-1] && num > arr[i+1]
             peeks << num
-        endk
+        end
     end
     peeks
 end

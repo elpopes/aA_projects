@@ -3,9 +3,7 @@
 # The method should return false otherwise.
 
 def adult_in_group?(people)
-    people.each {|hash| return true if hash[:age] > 17 } 
-    return false
-    # people.values.any? {|age| age > 17}
+    people.any? {|hash| hash[:age] > 17 }
 end
 
 people_1 = [

@@ -4,10 +4,7 @@
 # 1 is the only number that divides both 25 and 12.
 
 def coprime?(num_1, num_2)
-    (2...num_1).each do |div|
-        return false if num_1 % div == 0 && num_2 % div == 0
-    end
-    true 
+    (2...num_1).none? {|div| num_1 % div == 0 && num_2 % div == 0}
 end
 
 p coprime?(25, 12)    # => true

@@ -7,9 +7,11 @@
 # to be the same before and after calling your method.
 
 def ele_replace!(array, hash)
-    array.each_with_index do |ele, i|
+    array.map! do |ele|
         if hash.has_key?(ele) 
-            array[i] = hash[ele]
+            hash[ele]
+        else
+            ele
         end
     end
     array
