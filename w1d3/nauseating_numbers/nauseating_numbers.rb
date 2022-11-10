@@ -409,23 +409,20 @@ p triangular_word?('sink')      # false
 puts
 
 
-def consecutive_collapse(array) 
-    collapsed = false
-    while collapsed == false
-        collapsed = true
-        array.each_with_index do |num, i|
-            num2 = array[i+1]
-            unless num2.nil?
-                if num == num2 + 1 || num == num2 - 1
-                    array.delete(num)
-                    array.delete(num2)
-                    collapsed = false
-                end
-            end
+def collapse(nums)
+    (0...nums.length - 1).each do |i|
+        if nums[i] + 1 == nums[i+1] || nums[i] - 1 == nums[i + 1]
+            return nums[0...i] + nums[i + 2..-1]
         end
     end
-    array
+    nums
 end
+
+def consecutive_collapse(numbers) 
+    numbers.length-1.times {numbers = collapse(numbers)}
+    numbers
+end
+
 
 puts "consecutive_collapse"
 p consecutive_collapse([3, 4, 1])                     # [1]
