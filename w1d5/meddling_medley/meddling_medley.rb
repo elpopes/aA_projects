@@ -284,3 +284,11 @@ puts "compress".upcase
 p compress('aabbbbc')   # "a2b4c"
 p compress('boot')      # "bo2t"
 p compress('xxxyxxzzzz')# "x3yx2z4"
+
+
+class Integer
+    def is_prime?
+        return false if self < 2 
+        (2...self).each ldjaljda
+    end
+end

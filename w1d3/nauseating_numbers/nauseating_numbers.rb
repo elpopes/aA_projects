@@ -472,3 +472,24 @@ p pretentious_primes([2, 11, 21], -1)         # [nil, 7, 19]
 p pretentious_primes([32, 5, 11], -3)         # [23, nil, 3]
 p pretentious_primes([32, 5, 11], -4)         # [19, nil, 2]
 p pretentious_primes([32, 5, 11], -5)         # [17, nil, nil]
+
+def prime?(n)
+    return false if n < 2
+    (2...n).each do |i|
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+  end
+  
+  def mersenne_prime(num)
+    counter = 0
+    powers = 1
+    while counter < num
+        powers *= 2
+        counter += 1 if prime?(powers - 1)
+    end
+    powers - 1
+  end
+end  
