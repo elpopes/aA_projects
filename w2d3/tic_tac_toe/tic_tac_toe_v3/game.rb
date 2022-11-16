@@ -1,29 +1,36 @@
 require_relative "board"
 require_relative "player"
-
+require_relative "game"
+require_relative "computer"
+require 'byebug'
 
 class Game
-    def initialize(p1_mark, p2_mark, size)
+
+    def initialize(size, player_hash)
         @board = Board.new(size)
-        @player_1, @player_2 = Player.new(p1_mark), Player.new(p2_mark)
-        @current_player = @player_1
+        @play_array = []
+        # debugger
+        player_hash.each {|mark, comp| comp ? @play_array << Computer.new(mark) : @play_array << Player.new(mark) }
+        @current_player = @play_array[0]
     end
 
     def switch_turn
-        @current_player == @player_1 ? @current_player = @player_2 : @current_player = @player_1
+        @play_array.rotate!
+        @current_player = @play_array[0]
     end
 
     def play
         while @board.empty_positions?
             @board.print
             mark = @current_player.mark
-            @board.place_mark(@current_player.get_position, mark)
+            @board.place_mark(@current_player.get_position(@board.legal_positions), mark)
             if @board.win?(mark) 
                 return winner(mark)
             else
                 switch_turn
             end
         end
+        @board.print
         puts "There are no winner today, just losers."
     end
 
@@ -34,5 +41,5 @@ class Game
 
 end
 
-g = Game.new(:X, :O, 5)
-g.play
+game = Game.new(4, X: true, Y: true, Z: true)
+game.play

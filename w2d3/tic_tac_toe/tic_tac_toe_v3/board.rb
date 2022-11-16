@@ -8,9 +8,9 @@ class Board
 
     def print
         system("clear")
-        p "____TIC_TAC_TOE______"
-        @grid.each {|row| puts "     #{row.join(" ")}"}
-        p "*********************"
+        p "__________TIC_TAC_TOE__________"
+        @grid.each {|row| puts "       #{row.join(" ")}"}
+        p "*******************************"
     end
 
     def [](pos)
@@ -31,6 +31,13 @@ class Board
     def within_range?(pos)
         row, col = pos
         row.between?(0, @limit) && col.between?(0, @limit)
+    end
+
+    def legal_positions
+        legal_positions = []
+        (0..@limit).each {|i| (0..@limit).each {|j| 
+        legal_positions << [i, j] if valid?([i, j])}}
+        legal_positions
     end
 
     def empty?(pos)
@@ -65,6 +72,9 @@ class Board
     end
 
 end
+
+# b = Board.new
+# p b.legal_positions
 
 
 # def fill(x)

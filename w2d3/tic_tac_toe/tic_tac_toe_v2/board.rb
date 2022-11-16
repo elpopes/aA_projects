@@ -8,9 +8,9 @@ class Board
 
     def print
         system("clear")
-        p "____TIC_TAC_TOE______"
-        @grid.each {|row| puts "     #{row.join(" ")}"}
-        p "*********************"
+        p "__________TIC_TAC_TOE__________"
+        @grid.each {|row| puts "       #{row.join(" ")}"}
+        p "*******************************"
     end
 
     def [](pos)
