@@ -1,6 +1,6 @@
 require "byebug"
 class Board 
-    # attr_reader :grid, :limit
+    attr_reader :grid, :limit
     def initialize(n=3)
         @grid = Array.new(n){Array.new(n, "___")}
         @limit = n - 1
