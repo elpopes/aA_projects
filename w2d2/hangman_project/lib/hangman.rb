@@ -73,3 +73,17 @@ class Hangman
     end
 
 end
+
+
+josephbergmann
+
+joeytsui1
+
+CornellB02
+
+M8825
+
+elpopes
+
+MannyLittle133
+
