@@ -53,6 +53,7 @@ class Board
             p 'you sunk my battleship!'
         else
             self[pos]=("\e[34m#{:X}\e[0m")
+            p 'you missed!'
             return false
         end
         true

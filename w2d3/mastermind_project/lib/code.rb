@@ -69,3 +69,24 @@ class Code
   end
 
 end
+
+def num_near_matches(guess)
+  sel_pegs = @pegs.dup
+    code_pegs = code.pegs.dup
+    sel_pegs.each_with_index do |ele, idx|
+      if sel_pegs[idx] == code.pegs[idx]
+        sel_pegs[idx] = “”
+        code_pegs[idx] = “”
+      end
+    end
+    count = 0
+    code_pegs.each do |ele|
+      if ele != “”
+        if sel_pegs.include?(ele)
+          count += 1
+          sel_pegs[sel_pegs.index(ele)] = “”
+        end
+      end
+    end
+  count
+end
